@@ -1,12 +1,11 @@
 {% from "vim/map.jinja" import vim with context %}
 
 vim:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ vim.pkg }}
 
 neobundle:
-  - git.latest
+  git.latest:
     - name: https://github.com/Shougo/neobundle.vim.git
     - target: /etc/vim/bundle
 
