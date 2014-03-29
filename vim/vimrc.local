@@ -1,0 +1,27 @@
+ if has('vim_starting')
+   set nocompatible               " Be iMproved
+
+   " Required:
+   set runtimepath+=/etc/vim/bundle/neobundle.vim/
+ endif
+
+
+" Required:
+call neobundle#rc(expand('/etc/vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Source a system configuration file if available
+if filereadable("/etc/vim/vimrc.system")
+  source /etc/vim/vimrc.system
+endif
+
+" Vim5 and later versions support syntax highlighting.
+" This enables syntax highlighting by default.
+syntax on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
