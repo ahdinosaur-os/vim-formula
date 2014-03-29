@@ -8,6 +8,14 @@ neobundle:
   git.latest:
     - name: https://github.com/Shougo/neobundle.vim.git
     - target: /etc/vim/bundle
+  file.directory:
+    - name: /etc/vim/bundle
+    - dir_mode: 755
+    - file_mode: 644
+    - recurse:
+      - mode
+    - require:
+      - git: neobundle
 
 vimrc_local:
   file.managed:
