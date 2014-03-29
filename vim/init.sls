@@ -7,7 +7,7 @@ vim:
 neobundle:
   git.latest:
     - name: https://github.com/Shougo/neobundle.vim.git
-    - target: /etc/vim/bundle
+    - target: /etc/vim/bundle/neobundle.vim
   file.directory:
     - name: /etc/vim/bundle
     - dir_mode: 755

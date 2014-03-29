@@ -1,9 +1,9 @@
- if has('vim_starting')
-   set nocompatible               " Be iMproved
+if has('vim_starting')
+ set nocompatible               " Be iMproved
 
-   " Required:
-   set runtimepath+=/etc/vim/bundle/neobundle.vim/
- endif
+ " Required:
+ set runtimepath+=/etc/vim/bundle/neobundle.vim/
+endif
 
 
 " Required:
@@ -20,7 +20,7 @@ endif
 
 " Vim5 and later versions support syntax highlighting.
 " This enables syntax highlighting by default.
-syntax on
+filetype plugin indent on
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
