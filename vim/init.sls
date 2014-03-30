@@ -37,23 +37,23 @@ vimrc_system:
       - pkg: vim
       - file: vimrc_local
 
-{% for name, user in pillar.get('users', {}).items() %}
+{% for userName, user in pillar.get('users', {}).items() %}
 {%- if user == None -%}
 {%- set user = {} -%}
 {%- endif -%}
-{%- set userHome = user.get('home', "/home/%s" % name) -%}
+{%- set userHome = user.get('home', "/home/%s" % userName) -%}
 
-{%- if 'prime_group' in user and 'name' in user['prime_group'] %}
-{%- set userGroup = user.prime_group.name -%}
+{%- if 'prime_group' in user and 'userName' in user['prime_group'] %}
+{%- set userGroup = user.prime_group.userName -%}
 {%- else -%}
-{%- set userGroup = name -%}
+{%- set userGroup = userName -%}
 {%- endif %}
 {{userHome}}/.vimrc:
   file.managed:
     - source:
-      - salt://vim/vimrc.{{name}}
+      - salt://vim/vimrc.{{userName}}
       - salt://vim/vimrc.default
-    - user: {{name}}
+    - user: {{userName}}
     - group: {{userGroup}}
     - mode: 644
     - require:
