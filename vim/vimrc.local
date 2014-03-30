@@ -16,7 +16,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " general
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
+
 NeoBundle 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+
 NeoBundle 'spf13/vim-autoclose'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'Lokaltog/vim-easymotion'
