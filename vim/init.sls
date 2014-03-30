@@ -7,9 +7,9 @@ vim:
 neobundle:
   git.latest:
     - name: https://github.com/Shougo/neobundle.vim.git
-    - target: /etc/vim/bundle/neobundle.vim
+    - target: {{ vim.share_dir }}/bundle/neobundle.vim
   file.directory:
-    - name: /etc/vim/bundle
+    - name: {{ vim.share_dir }}/bundle
     - dir_mode: 755
     - file_mode: 644
     - recurse:
@@ -19,7 +19,7 @@ neobundle:
 
 vimrc_local:
   file.managed:
-    - name: /etc/vim/vimrc.local
+    - name: {{ vim.share_dir }}/vimrc.local
     - source: salt://vim/vimrc.local
     - mode: 644
     - require:
