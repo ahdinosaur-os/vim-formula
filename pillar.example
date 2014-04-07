@@ -1,0 +1,13 @@
+vim:
+  michael:
+    home: "/home/michael"
+    bundles:
+      - 'tpope/vim-fugitive'
+      - 'kien/ctrlp.vim'
+      - 'scrooloose/nerdtree'
+      - 'flazz/vim-colorschemes'
+    background: dark
+    colorscheme: candycode
+    tabwidth: 2
+    vimrc: |
+      map <C-n> :NERDTreeToggle<CR>

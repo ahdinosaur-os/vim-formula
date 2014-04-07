@@ -2,46 +2,20 @@ if has('vim_starting')
  set nocompatible   " Be iMproved
 
  " Required:
- set runtimepath+=/etc/vim/bundle/neobundle.vim/
+ set runtimepath+=$HOME/.vim/neobundle.vim/
 endif
 
 " Required:
-call neobundle#rc(expand('/etc/vim/bundle/'))
+call neobundle#rc(expand('$HOME/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " --- Bundles! ---
-" general
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kien/ctrlp.vim'
-
-NeoBundle 'scrooloose/nerdtree'
-map <C-n> :NERDTreeToggle<CR>
-
-NeoBundle 'spf13/vim-autoclose'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'mbbill/undotree'
-" javascript
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'moll/vim-node'
-" python
-NeoBundle 'hdima/python-syntax'
-" html
-NeoBundle 'othree/html5.vim'
-" css
-NeoBundle 'skammer/vim-css-color'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'groenewege/vim-less'
-" salt
-NeoBundle 'saltstack/salt-vim'
-" csv
-NeoBundle 'vim-scripts/csv.vim'
-" markdown
-NeoBundle 'plasticboy/vim-markdown'
+{%- for bundle in bundles %}
+NeoBundle '{{ bundle }}'
+{%- endfor %}
 " --- /Bundles! ---
 
 " Vim5 and later versions support syntax highlighting.
@@ -49,8 +23,8 @@ NeoBundle 'plasticboy/vim-markdown'
 syntax enable
 
 " set colors
-set background=dark
-colorscheme candycode
+set background={{ background }}
+colorscheme {{ colorscheme }}
 
 " jump to the last position when
 " reopening a file
@@ -74,8 +48,10 @@ set mouse=a    " Enable mouse usage (all modes)
 " set tab / spaces
 set tabstop=8
 set expandtab
-set softtabstop=2
-set shiftwidth=2
+set softtabstop={{ tabwidth }}
+set shiftwidth={{ tabwidth }}
+
+{{ vimrc }}
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
