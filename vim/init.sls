@@ -17,11 +17,11 @@ neobundle:
     - name: {{ home }}/.vim/bundle
     - dir_mode: 755
     - file_mode: 644
-    - owner: {{ name }}
+    - user: {{ name }}
     - group: {{ name }}
     - recurse:
       - mode
-      - owner
+      - user
       - group
     - require:
       - git: neobundle
@@ -39,7 +39,7 @@ vimrc_local:
       tabwidth: 2
       vimrc: ""
     - mode: 644
-    - owner: {{ name }}
+    - user: {{ name }}
     - group: {{ name }}
     - require:
       - pkg: vim
