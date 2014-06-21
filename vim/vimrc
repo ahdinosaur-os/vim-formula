@@ -23,6 +23,7 @@ NeoBundle '{{ bundle }}'
 syntax enable
 
 " set colors
+set t_Co=256
 set background={{ background }}
 colorscheme {{ colorscheme }}
 
@@ -35,6 +36,8 @@ endif
 " load indentation rules and plugins
 " according to the detected filetype.
 filetype plugin indent on
+
+let mapleader="{{ mapLeader }}"
 
 set showcmd    " Show (partial) command in status line.
 set showmatch    " Show matching brackets.

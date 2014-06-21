@@ -36,6 +36,7 @@ vimrc_local:
       bundles: []
       background: dark
       colorscheme: default
+      mapleader: ","
       tabwidth: 2
       vimrc: ""
     - mode: 644
