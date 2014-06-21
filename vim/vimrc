@@ -37,7 +37,7 @@ endif
 " according to the detected filetype.
 filetype plugin indent on
 
-let mapleader="{{ mapLeader }}"
+let mapleader="{{ mapleader }}"
 
 set showcmd    " Show (partial) command in status line.
 set showmatch    " Show matching brackets.
