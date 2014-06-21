@@ -13,18 +13,6 @@ neobundle:
   git.latest:
     - name: https://github.com/Shougo/neobundle.vim.git
     - target: {{ home }}/.vim/bundle/neobundle.vim
-  file.directory:
-    - name: {{ home }}/.vim/bundle
-    - dir_mode: 755
-    - file_mode: 644
-    - user: {{ name }}
-    - group: {{ name }}
-    - recurse:
-      - mode
-      - user
-      - group
-    - require:
-      - git: neobundle
 
 vimrc_local:
   file.managed:
@@ -45,5 +33,18 @@ vimrc_local:
     - require:
       - pkg: vim
       - git: neobundle
+  file.directory:
+    - name: {{ home }}/.vim
+    - dir_mode: 755
+    - file_mode: 644
+    - user: {{ name }}
+    - group: {{ name }}
+    - recurse:
+      - mode
+      - user
+      - group
+    - require:
+      - file: vimrc_local
+
 
 {% endfor %}
