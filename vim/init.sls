@@ -33,6 +33,8 @@ vimrc_local:
     - require:
       - pkg: vim
       - git: neobundle
+
+vimdir_local:
   file.directory:
     - name: {{ home }}/.vim
     - dir_mode: 755
