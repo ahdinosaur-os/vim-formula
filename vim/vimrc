@@ -8,7 +8,7 @@ if has('vim_starting')
 endif
 
 " Required:
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -19,6 +19,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle '{{ bundle }}'
 {%- endfor %}
 " --- /Bundles! ---
+
+call neobundle#end()
 
 " Vim5 and later versions support syntax highlighting.
 " This enables syntax highlighting by default.
