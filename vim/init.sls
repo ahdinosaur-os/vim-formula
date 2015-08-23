@@ -37,16 +37,12 @@ vimrc_local:
 vimdir_local:
   file.directory:
     - name: {{ home }}/.vim
-    - dir_mode: 755
-    - file_mode: 755
     - user: {{ name }}
     - group: {{ name }}
     - recurse:
-      - mode
       - user
       - group
     - require:
       - file: vimrc_local
-
 
 {% endfor %}
