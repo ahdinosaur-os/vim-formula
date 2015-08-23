@@ -19,7 +19,7 @@ vimrc_local:
     - name: {{ home }}/.vimrc
     - source: salt://vim/vimrc
     - template: jinja
-    - context: {{ user }}
+    - context: {{ user | json() }}
     - defaults:
       bundles: []
       background: dark
