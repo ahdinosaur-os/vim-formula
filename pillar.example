@@ -9,5 +9,3 @@ vim:
     background: dark
     colorscheme: candycode
     tabwidth: 2
-    vimrc: |
-      map <C-n> :NERDTreeToggle<CR>
