@@ -52,7 +52,7 @@ vimplugins_{{ name }}_{{ plugin }}:
     - group: {{ name }}
     - require:
       - pkg: vim
-      - vimplugins_{{ name }}_dir
+      - file: vimplugins_{{ name }}_dir
 
 {% endfor %}
 
