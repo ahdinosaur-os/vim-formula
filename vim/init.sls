@@ -32,7 +32,7 @@ vimrc_{{ name }}:
     - group: {{ name }}
     - require:
       - pkg: vim
-      - git: neobundle
+      - git: neobundle_{{ name }}
 
 vimplugins_{{ name }}_dir:
   file.directory:
@@ -65,6 +65,6 @@ vimdir_{{ name }}:
       - user
       - group
     - require:
-      - file: vimrc_local
+      - file: vimrc_{{ name }}
 
 {% endfor %}
