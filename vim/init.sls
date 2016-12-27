@@ -10,12 +10,11 @@ vim:
 {%- endif -%}
 {%- set home = user.get('home', "/home/%s" % name) %}
 
-neobundle_{{ name }}:
-  git.latest:
-    - name: https://github.com/Shougo/neobundle.vim.git
-    - target: {{ home }}/.vim/bundle/neobundle.vim
+vim:
+  pkg.installed:
+    - name: {{ vim.pkg }}
 
-vimrc_{{ name }}:
+vimrc_local:
   file.managed:
     - name: {{ home }}/.vimrc
     - source: salt://vim/vimrc
@@ -32,29 +31,6 @@ vimrc_{{ name }}:
     - group: {{ name }}
     - require:
       - pkg: vim
-      - git: neobundle_{{ name }}
-
-vimplugins_{{ name }}_dir:
-  file.directory:
-    - name: {{ home }}/.vim/plugin
-    - mode: 755
-    - user: {{ name }}
-    - group: {{ name }}
-
-{% for plugin in user.get('plugins', []) %}
-
-vimplugins_{{ name }}_{{ plugin }}:
-  file.managed:
-    - name: {{ home }}/.vim/plugin/{{ plugin }}.vim
-    - source: salt://{{ name }}/vim/{{ plugin }}
-    - mode: 644
-    - user: {{ name }}
-    - group: {{ name }}
-    - require:
-      - pkg: vim
-      - file: vimplugins_{{ name }}_dir
-
-{% endfor %}
 
 vimdir_{{ name }}:
   file.directory:

@@ -2,29 +2,25 @@ if has('vim_starting')
  if &compatible
    set nocompatible   " Be iMproved
  endif
-
- " Required:
- set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" --- Bundles! ---
-{%- for bundle in bundles %}
-NeoBundle '{{ bundle }}'
+call plug#begin()
+" --- plugins! ---
+{%- for plugin in plugins %}
+Plug '{{ plugin }}'
 {%- endfor %}
-" --- /Bundles! ---
-
-call neobundle#end()
+" --- /plugins! ---
+call plug#end()
 
 " Vim5 and later versions support syntax highlighting.
 " This enables syntax highlighting by default.
-syntax enable
+"syntax enable
 
 " set colors
 set t_Co=256
@@ -39,7 +35,7 @@ endif
 
 " load indentation rules and plugins
 " according to the detected filetype.
-filetype plugin indent on
+"filetype plugin indent on
 
 let mapleader="{{ mapleader }}"
 
@@ -58,6 +54,4 @@ set expandtab
 set softtabstop={{ tabwidth }}
 set shiftwidth={{ tabwidth }}
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+{{ vimrc | replace('\\n', '\n') }}
